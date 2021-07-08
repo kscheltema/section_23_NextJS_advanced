@@ -1,14 +1,14 @@
 import {Fragment} from 'react';
+import MeetupDetail from '../../components/meetups/MeetupDetails';
 
 function MeetupDetails() {
-  return <Fragment>
-<img 
- src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/1280px-Stadtbild_M%C3%BCnchen.jpg'
- alt='A first meetup'/>
- <h1>A First Meetup</h1>
- <address>Some Street 5, Some City</address>
- <p>The meetup description</p>
-  </Fragment>;
+  return 
+  <MeetupDetails 
+  description='The meetup description'
+  address='Some Street 5, Some City'
+  title='A First Meetup'
+  image='https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/1280px-Stadtbild_M%C3%BCnchen.jpg' 
+  />
 }
 
 export default MeetupDetails;
