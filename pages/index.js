@@ -1,6 +1,5 @@
 import MeetupList from '../components/meetups/MeetupList';
 import Layout from '../components/layout/Layout';
-import { useEffect } from 'react';
 
 const DUMMY_MEETUPS = [
   {
@@ -20,15 +19,23 @@ description: 'this is a second meetup',
 ];
 
 function HomePage() {
-    const [loadedMeetups, setLoadedMeetups] = useState([]);
-    useEffect(() => {
-//send a http request and fetch data from server
-setLoadedMeetups(DUMMY_MEETUPS);
-    }, []);
 
   return <Layout>
-  <MeetupList meetups={loadedMeetups} />
+  <MeetupList meetups={props.meetups} />
   </Layout> 
 };
 
+export async function getStaticProps() {
+  
+  return {
+    //can do many things
+
+    props: {
+      meetups: DUMMY_MEETUPS
+    } 
+    //page props component function
+  };
+} //this function uses async promise to prepare props for rendering
+  // in here can execute code that would run in a server  
+  // cause it does not execute on client or server side
 export default HomePage;
