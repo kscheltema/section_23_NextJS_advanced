@@ -18,7 +18,7 @@ description: 'this is a second meetup',
 }
 ];
 
-function HomePage() {
+function HomePage(props) {
 
   return <Layout>
   <MeetupList meetups={props.meetups} />
