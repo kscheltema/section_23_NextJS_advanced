@@ -32,7 +32,9 @@ export async function getStaticProps() {
 
     props: {
       meetups: DUMMY_MEETUPS
-    } 
+    },
+    revalidate: 10  
+    //if there are requests for this page this prop will force regeneration every 10seconds on the server 
     //page props component function
   };
 } //this function uses async promise to prepare props for rendering
