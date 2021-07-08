@@ -32,6 +32,7 @@ export async function getServerSideProps(context) {
   //but will run after deployment
   //page is pre-regenerated for every request
   //dont have data regenerating all the time get static props better for performance
+  //getServerSideProps best when req and res access is required
   return {
     props: {
       meetups: DUMMY_MEETUPS
