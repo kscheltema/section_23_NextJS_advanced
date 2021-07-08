@@ -25,19 +25,28 @@ function HomePage(props) {
   </Layout> 
 };
 
-export async function getStaticProps() {
-  
+export async function getServerSideProps(context) {
+  const req = context.req;
+  const res = context.res;
+  //will not run during the build process 
+  //but will run after deployment
+  //page is pre-regenerated for every request
+  //dont have data regenerating all the time get static props better for performance
   return {
-    //can do many things
-
     props: {
       meetups: DUMMY_MEETUPS
     },
-    revalidate: 10  
-    //if there are requests for this page this prop will force regeneration every 10seconds on the server 
-    //page props component function
   };
-} //this function uses async promise to prepare props for rendering
-  // in here can execute code that would run in a server  
-  // cause it does not execute on client or server side
+}
+
+// export async function getStaticProps() {
+//   return {
+//     //can do many things
+//     props: {
+//       meetups: DUMMY_MEETUPS
+//     },
+//     revalidate: 10  
+//   };
+// }     
+
 export default HomePage;
