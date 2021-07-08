@@ -25,29 +25,24 @@ function HomePage(props) {
   </Layout> 
 };
 
-export async function getServerSideProps(context) {
-  const req = context.req;
-  const res = context.res;
-  //will not run during the build process 
-  //but will run after deployment
-  //page is pre-regenerated for every request
-  //dont have data regenerating all the time get static props better for performance
-  //getServerSideProps best when req and res access is required
-  return {
-    props: {
-      meetups: DUMMY_MEETUPS
-    },
-  };
-}
-
-// export async function getStaticProps() {
+// export async function getServerSideProps(context) {
+//   const req = context.req;
+//   const res = context.res;
 //   return {
-//     //can do many things
 //     props: {
 //       meetups: DUMMY_MEETUPS
 //     },
-//     revalidate: 10  
 //   };
-// }     
+// }
+
+export async function getStaticProps() {
+  return {
+    //can do many things
+    props: {
+      meetups: DUMMY_MEETUPS
+    },
+    revalidate: 10  
+  };
+}     
 
 export default HomePage;
