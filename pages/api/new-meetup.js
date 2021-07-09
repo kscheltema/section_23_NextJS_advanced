@@ -4,7 +4,6 @@ import {MongoClient} from 'mongodb';
 function handler(req, res) {
   if (req.method === 'POST') {
     const data = req.body;
-    const {title, image, address, description} = data;
   
     MongoClient.connect('mongodb+srv://Seth:Twilight26066701@cluster0.epecw.mongodb.net/meetups?retryWrites=true&w=majority')
   //this link comes from the mongo connect modal
