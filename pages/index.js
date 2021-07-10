@@ -19,6 +19,8 @@ function HomePage(props) {
 //   };
 // }
 
+//this file will be executed when this code is pre-generated
+
 export async function getStaticProps() {
   const client = await MongoClient.connect('mongodb+srv://Seth:Twilight26066701@cluster0.epecw.mongodb.net/meetups?retryWrites=true&w=majority')
 
