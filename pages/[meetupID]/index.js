@@ -1,7 +1,8 @@
+import { MongoClient } from 'mongodb';
 import MeetupDetail from '../../components/meetups/MeetupDetails';
 
 function MeetupDetails() {
-  return (  <MeetupDetails 
+  return (  <MeetupDetail 
   description='The meetup description'
   address='Some Street 5, Some City'
   title='A First Meetup'
@@ -10,20 +11,16 @@ function MeetupDetails() {
 }
 
 export async function getStaticPaths() {
+  const client = await MongoClient.connect('mongodb+srv://Seth:Twilight26066701@cluster0.epecw.mongodb.net/meetups?retryWrites=true&w=majority');
+  const db = client.db();
+  const meetupsCollection = db.collection('meetups');
+  const meetups = await meetupsCollection.find({}, {_id: 1}).toArray();
+
   return {
-    fallback: false, //false = paths contains all supported values 
-                    //thus if not supported 404 error
-    paths: [
-      {params: { //for dynamic segments
-        meetupID: 'm1',
-      },
-    },
-      {params: { //for dynamic segments
-        meetupID: 'm2',
-    },
-  },
-    ]
-  }
+    fallback: false, 
+    paths: meetups.map(meetup => ({params: {meetupID: meetup._id.toString()},
+  })),
+  };
 }
 
 export async function getStaticProps(context) {
